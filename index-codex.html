@@ -1428,12 +1428,14 @@ td:last-child, th:last-child { text-align: right; }
 
 <p><strong>Worktrees:</strong></p>
 
-<pre><code>git worktree add ../repo-agent-refactor -b agent/refactor
+<pre><code><span class="comment"># Worktrees (fast, shared .git)</span>
+git worktree add ../repo-agent-refactor -b agent/refactor
 git worktree add ../repo-agent-migration -b agent/migration</code></pre>
 
 <p><strong>Separate clones</strong> (cleaner isolation, slower setup):</p>
 
-<pre><code>git clone &quot;$(pwd)&quot; ../repo-agent-review
+<pre><code><span class="comment"># Separate clones (cleaner isolation)</span>
+git clone &quot;$(pwd)&quot; ../repo-agent-review
 git clone &quot;$(pwd)&quot; ../repo-agent-perf</code></pre>
 
 <p>Rules that keep you sane:</p>
@@ -1866,7 +1868,7 @@ After I approve:
 
 <h3><code>plan.md</code></h3>
 
-<pre><code># Plan: &lt;project name&gt;
+<pre><code><span class="comment"># Plan: &lt;project name&gt;</span>
 
 Last updated: &lt;YYYY-MM-DD HH:MM&gt;
 
@@ -1875,19 +1877,19 @@ This plan is a living document. Keep it self-contained. Assume a new person, or 
 - `checklist.yaml` (execution state machine + acceptance criteria)
 - `run-log.md` (append-only ops log: decisions, evidence, failures, fixes)
 
-## Purpose / Big picture
+<span class="keyword">## Purpose / Big picture</span>
 
 In 3 to 6 sentences:
 - Why this work matters
 - What changes for a user
 - How to see it working
 
-## Progress and logs
+<span class="keyword">## Progress and logs</span>
 
 - Progress is tracked in `checklist.yaml`. Keep it updated as you go.
 - Decisions, surprises, and evidence go in `run-log.md` with timestamps.
 
-## Context and orientation
+<span class="keyword">## Context and orientation</span>
 
 Explain the current state as if the reader knows nothing about this repo.
 
@@ -1897,7 +1899,7 @@ Explain the current state as if the reader knows nothing about this repo.
 - Glossary (define any non-obvious term you use):
   - &lt;term&gt;: &lt;definition&gt;
 
-## Scope
+<span class="keyword">## Scope</span>
 
 ### Goal
 
@@ -1912,14 +1914,14 @@ Explain the current state as if the reader knows nothing about this repo.
 - &lt;verifiable outcome 1&gt;
 - &lt;verifiable outcome 2&gt;
 
-## Constraints and invariants
+<span class="keyword">## Constraints and invariants</span>
 
 - Must not change:
 - Safety:
 - Compatibility:
 - Performance:
 
-## Plan of work (milestones)
+<span class="keyword">## Plan of work (milestones)</span>
 
 Each milestone should have:
 - Outcome
@@ -1929,14 +1931,14 @@ Each milestone should have:
 - M2:
 - M3:
 
-## Implementation map
+<span class="keyword">## Implementation map</span>
 
 Concrete edits by area. Use repo-relative paths.
 
 - `path/to/file`: &lt;what to change&gt;
 - `path/to/module/`: &lt;what to add&gt;
 
-## Verification
+<span class="keyword">## Verification</span>
 
 Fast loop (iteration):
 - &lt;command&gt;
@@ -1947,14 +1949,14 @@ Full suite (milestones / before landing):
 Evidence to capture (and where it is written):
 - &lt;run-log.md entry + artifact path&gt;
 
-## Rollout and rollback
+<span class="keyword">## Rollout and rollback</span>
 
 - Rollout plan:
 - Rollback plan:
 - Feature flags:
 - Migrations:
 
-## Idempotence and recovery
+<span class="keyword">## Idempotence and recovery</span>
 
 What can be rerun safely? What can fail halfway? How do you retry?
 
@@ -1962,26 +1964,26 @@ What can be rerun safely? What can fail halfway? How do you retry?
 - Non-idempotent steps:
 - Recovery procedure:
 
-## Interfaces and dependencies
+<span class="keyword">## Interfaces and dependencies</span>
 
 - External services / APIs:
 - Schemas / DB:
 - Libraries / SDKs:
 - Feature flags:
 
-## Skills and tools
+<span class="keyword">## Skills and tools</span>
 
 - Skills to use:
 - MCP servers (if any):
 - CLI tools:
 
-## Golden examples
+<span class="keyword">## Golden examples</span>
 
 Links to commits/files that define the pattern to replicate.
 
 - &lt;link or path&gt;
 
-## Open questions
+<span class="keyword">## Open questions</span>
 
 - &lt;questions that block execution&gt;</code></pre>
 
@@ -1989,17 +1991,17 @@ Links to commits/files that define the pattern to replicate.
 
 <p>Agent checklist format I use in other repos.</p>
 
-<pre><code>summary:
-  last_updated: &quot;&lt;YYYY-MM-DD HH:MM&gt;&quot;
-  active_task_id: &quot;&quot;
-  status: &quot;not_started&quot;
+<pre><code><span class="keyword">summary:</span>
+  last_updated: <span class="string">&quot;&lt;YYYY-MM-DD HH:MM&gt;&quot;</span>
+  active_task_id: <span class="string">&quot;&quot;</span>
+  status: <span class="string">&quot;not_started&quot;</span>
   blockers: []
   next_actions: []
   verification_loop:
     fast: []
     full: []
 
-instructions: |-
+<span class="keyword">instructions:</span> |-
   This `checklist.yaml` is the execution plan for the repo. It is the source of truth for what &quot;done&quot; means.
 
   Agent workflow:
@@ -2020,51 +2022,51 @@ instructions: |-
   - `status`: One of `not_started`, `in_progress`, `complete`, `failed`, `archived_as_irrelevant`.
   - `note`: Freeform working log for the agent (string). Leave empty until there is something worth recording.
 
-guidelines:
-  - &quot;Do not change public APIs without updating callers.&quot;
-  - &quot;Do not add dependencies without justification.&quot;
-  - &quot;Prefer small, reversible steps and frequent verification.&quot;
-  - &quot;Do not commit secrets.&quot;
+<span class="keyword">guidelines:</span>
+  - <span class="string">&quot;Do not change public APIs without updating callers.&quot;</span>
+  - <span class="string">&quot;Do not add dependencies without justification.&quot;</span>
+  - <span class="string">&quot;Prefer small, reversible steps and frequent verification.&quot;</span>
+  - <span class="string">&quot;Do not commit secrets.&quot;</span>
 
-tasks:
+<span class="keyword">tasks:</span>
   - task_id: T001
-    title: &quot;Establish baseline&quot;
-    description: &quot;Run the fast loop and full suite on main, record failures if any.&quot;
+    title: <span class="string">&quot;Establish baseline&quot;</span>
+    description: <span class="string">&quot;Run the fast loop and full suite on main, record failures if any.&quot;</span>
     acceptance_criteria:
-      - &quot;Fast loop passes (or failures recorded in run-log.md).&quot;
-      - &quot;Full suite passes (or failures recorded in run-log.md).&quot;
-    implementation_notes: &quot;&quot;
+      - <span class="string">&quot;Fast loop passes (or failures recorded in run-log.md).&quot;</span>
+      - <span class="string">&quot;Full suite passes (or failures recorded in run-log.md).&quot;</span>
+    implementation_notes: <span class="string">&quot;&quot;</span>
     status: not_started
-    note: &quot;&quot;
+    note: <span class="string">&quot;&quot;</span>
 
   - task_id: T002
-    title: &quot;&lt;fill in&gt;&quot;
-    description: &quot;&lt;fill in&gt;&quot;
+    title: <span class="string">&quot;&lt;fill in&gt;&quot;</span>
+    description: <span class="string">&quot;&lt;fill in&gt;&quot;</span>
     acceptance_criteria:
-      - &quot;&lt;fill in&gt;&quot;
-    implementation_notes: &quot;&quot;
+      - <span class="string">&quot;&lt;fill in&gt;&quot;</span>
+    implementation_notes: <span class="string">&quot;&quot;</span>
     status: not_started
-    note: &quot;&quot;</code></pre>
+    note: <span class="string">&quot;&quot;</span></code></pre>
 
 <h3><code>run-log.md</code></h3>
 
 <p>Append-only. Timestamp everything. Tag entries so you can scan it quickly.</p>
 
-<pre><code># Run log
+<pre><code><span class="comment"># Run log</span>
 
-## Context
+<span class="keyword">## Context</span>
 - Repo:
 - Branch/worktree:
 - Start time:
 
-## Events (append-only)
-- &lt;YYYY-MM-DD HH:MM&gt; decision: ...
-- &lt;YYYY-MM-DD HH:MM&gt; evidence: ...
-- &lt;YYYY-MM-DD HH:MM&gt; failure: ...
-- &lt;YYYY-MM-DD HH:MM&gt; fix: ...
-- &lt;YYYY-MM-DD HH:MM&gt; note: ...
+<span class="keyword">## Events (append-only)</span>
+- &lt;YYYY-MM-DD HH:MM&gt; <span class="keyword">decision:</span> ...
+- &lt;YYYY-MM-DD HH:MM&gt; <span class="keyword">evidence:</span> ...
+- &lt;YYYY-MM-DD HH:MM&gt; <span class="keyword">failure:</span> ...
+- &lt;YYYY-MM-DD HH:MM&gt; <span class="keyword">fix:</span> ...
+- &lt;YYYY-MM-DD HH:MM&gt; <span class="keyword">note:</span> ...
 
-## Follow-ups
+<span class="keyword">## Follow-ups</span>
 - Skills to extract:
 - Evals to add:
 - Agent guidelines to update (`AGENTS.md`):
