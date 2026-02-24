@@ -321,20 +321,15 @@ td:last-child, th:last-child { text-align: right; }
   .key-points li { padding-left: 2.2rem; }
 }
 
-@page { margin: 0; }
+@page { margin: 18mm 16mm 18mm; }
+@page:first { margin: 0; }
 
 @media print {
   .cover { page-break-after: always; }
   .chapter { page-break-before: always; padding-top: 0; }
 
-  /* Full-bleed PDF (0 margins) needs an internal per-page "safe area" so
-     blocks pushed to a new page don't stick to the page edge. */
-  .book {
-    padding-top: 3rem;
-    padding-bottom: 3.5rem;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-  }
+  /* Page margins provide the per-page safe area; remove extra layout padding. */
+  .book { padding: 0; }
 
   /* Hide scroll indicator (interactive-only) */
   .cover-scroll { display: none; }
