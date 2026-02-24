@@ -535,43 +535,46 @@ td:last-child, th:last-child { text-align: right; }
   <div class="chapter-line"></div>
 </section>
 
-<p>A long-running agent is a coding agent that can run for <strong>hours or days</strong> with minimal intervention while it:</p>
-<ul>
+  <p>A long-running agent is a coding agent that can run for <strong>hours or days</strong> with minimal intervention while it:</p>
+  <ul>
   <li>Plans and executes multi-step work</li>
   <li>Keeps score with a build-verify loop (tests, builds, linters, benchmarks, browser flows, queries)</li>
   <li>Self-heals when it hits failure (flakes, timeouts, tool errors, missing context)</li>
   <li>Maintains state across a long session (compaction, resume, fork)</li>
-  <li>Leaves a paper trail you can audit (checkpoints, logs, evidence)</li>
-  <li>Gets better over time by extracting skills, agent guidelines, and evals from past runs</li>
-</ul>
+	  <li>Leaves a paper trail you can audit (checkpoints, logs, evidence)</li>
+	  <li>Gets better over time by extracting skills, agent guidelines, and evals from past runs</li>
+  </ul>
 
-<p>Cursor shared runs where agents worked close to a week on a single codebase. One example: a web browser built from scratch with 1M+ lines across about 1,000 files. Another: a Java LSP with 2.5M+ lines across about 10,000 files. They also reported peaking around <strong>10 million tool calls</strong> in a week, with bursts around 1,000 commits per hour.</p>
+  <!-- Agent capabilities illustration -->
+  <svg class="illustration" viewBox="0 0 600 260" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Six capabilities of a long-running agent">
+	  <rect width="600" height="260" rx="16" fill="#12151b"/>
+	  <text x="300" y="36" text-anchor="middle" fill="#5c6078" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.2em">WHAT AN AGENT DOES</text>
+	  <rect x="30" y="58" width="160" height="68" rx="10" fill="#1e2330" stroke="#4af0c0" stroke-width="1"/>
+	  <text x="110" y="85" text-anchor="middle" fill="#4af0c0" font-family="JetBrains Mono, monospace" font-size="9">PLANS</text>
+	  <text x="110" y="108" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Multi-step work</text>
+	  <rect x="220" y="58" width="160" height="68" rx="10" fill="#1e2330" stroke="#4a9cf0" stroke-width="1"/>
+	  <text x="300" y="85" text-anchor="middle" fill="#4a9cf0" font-family="JetBrains Mono, monospace" font-size="9">VERIFIES</text>
+	  <text x="300" y="108" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Build-verify loop</text>
+	  <rect x="410" y="58" width="160" height="68" rx="10" fill="#1e2330" stroke="#f0b84a" stroke-width="1"/>
+	  <text x="490" y="85" text-anchor="middle" fill="#f0b84a" font-family="JetBrains Mono, monospace" font-size="9">SELF-HEALS</text>
+	  <text x="490" y="108" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Flakes &middot; timeouts &middot; errors</text>
+	  <rect x="30" y="150" width="160" height="68" rx="10" fill="#1e2330" stroke="#9b6ef0" stroke-width="1"/>
+	  <text x="110" y="177" text-anchor="middle" fill="#9b6ef0" font-family="JetBrains Mono, monospace" font-size="9">MAINTAINS STATE</text>
+	  <text x="110" y="200" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Compaction &middot; resume &middot; fork</text>
+	  <rect x="220" y="150" width="160" height="68" rx="10" fill="#1e2330" stroke="#f06478" stroke-width="1"/>
+	  <text x="300" y="177" text-anchor="middle" fill="#f06478" font-family="JetBrains Mono, monospace" font-size="9">AUDITS</text>
+	  <text x="300" y="200" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Checkpoints &middot; logs &middot; evidence</text>
+	  <rect x="410" y="150" width="160" height="68" rx="10" fill="#1e2330" stroke="#c084fc" stroke-width="1"/>
+	  <text x="490" y="177" text-anchor="middle" fill="#c084fc" font-family="JetBrains Mono, monospace" font-size="9">SELF-EVOLVES</text>
+	  <text x="490" y="200" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Skills &middot; evals &middot; guides</text>
+  </svg>
 
-<div class="callout">This playbook is an operating model for how I achieved similar results. It is opinionated. It assumes you want throughput and you still want to ship safely: green CI, reviewable diffs, rollback paths, and no surprises in production.</div>
+  <p>Cursor shared runs where agents worked close to a week on a single codebase. One example: a web browser built from scratch with 1M+ lines across about 1,000 files. Another: a Java LSP with 2.5M+ lines across about 10,000 files. They also reported peaking around <strong>10 million tool calls</strong> in a week, with bursts around 1,000 commits per hour.</p>
 
-<!-- Agent capabilities illustration -->
-<svg class="illustration" viewBox="0 0 600 260" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Five capabilities of a long-running agent">
-  <rect width="600" height="260" rx="16" fill="#12151b"/>
-  <text x="300" y="36" text-anchor="middle" fill="#5c6078" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.2em">WHAT AN AGENT DOES</text>
-  <rect x="30" y="58" width="160" height="68" rx="10" fill="#1e2330" stroke="#4af0c0" stroke-width="1"/>
-  <text x="110" y="85" text-anchor="middle" fill="#4af0c0" font-family="JetBrains Mono, monospace" font-size="9">PLANS</text>
-  <text x="110" y="108" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Multi-step work</text>
-  <rect x="220" y="58" width="160" height="68" rx="10" fill="#1e2330" stroke="#4a9cf0" stroke-width="1"/>
-  <text x="300" y="85" text-anchor="middle" fill="#4a9cf0" font-family="JetBrains Mono, monospace" font-size="9">VERIFIES</text>
-  <text x="300" y="108" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Build-verify loop</text>
-  <rect x="410" y="58" width="160" height="68" rx="10" fill="#1e2330" stroke="#f0b84a" stroke-width="1"/>
-  <text x="490" y="85" text-anchor="middle" fill="#f0b84a" font-family="JetBrains Mono, monospace" font-size="9">SELF-HEALS</text>
-  <text x="490" y="108" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Flakes &middot; timeouts &middot; errors</text>
-  <rect x="120" y="150" width="160" height="68" rx="10" fill="#1e2330" stroke="#9b6ef0" stroke-width="1"/>
-  <text x="200" y="177" text-anchor="middle" fill="#9b6ef0" font-family="JetBrains Mono, monospace" font-size="9">MAINTAINS STATE</text>
-  <text x="200" y="200" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Compaction &middot; resume &middot; fork</text>
-  <rect x="320" y="150" width="160" height="68" rx="10" fill="#1e2330" stroke="#f06478" stroke-width="1"/>
-  <text x="400" y="177" text-anchor="middle" fill="#f06478" font-family="JetBrains Mono, monospace" font-size="9">AUDITS</text>
-  <text x="400" y="200" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Checkpoints &middot; logs &middot; evidence</text>
-</svg>
+  <div class="callout">This playbook is an operating model for how I achieved similar results. It is opinionated. It assumes you want throughput and you still want to ship safely: green CI, reviewable diffs, rollback paths, and no surprises in production.</div>
 
-<!-- ═══════ CH 04: WHERE THEY SHINE ═══════ -->
-<section class="chapter" id="where-they-shine">
+  <!-- ═══════ CH 04: WHERE THEY SHINE ═══════ -->
+  <section class="chapter" id="where-they-shine">
   <span class="chapter-num">Chapter 04</span>
   <h2>Where They Shine</h2>
   <div class="chapter-line"></div>
