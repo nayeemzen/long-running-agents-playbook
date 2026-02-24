@@ -347,29 +347,60 @@ td:last-child, th:last-child { text-align: right; }
 <div class="book">
 
 <!-- ═══════ HERO ILLUSTRATION ═══════ -->
-<svg class="illustration illustration-wide" viewBox="0 0 700 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agent execution loop diagram">
-  <rect width="700" height="220" rx="16" fill="#12151b"/>
-  <path d="M160 110 L240 110" stroke="#2a3040" stroke-width="2" stroke-dasharray="6 4"/>
-  <path d="M360 110 L440 110" stroke="#2a3040" stroke-width="2" stroke-dasharray="6 4"/>
-  <path d="M560 110 L620 90 L620 60 L80 60 L80 90 L100 110" stroke="#2a3040" stroke-width="2" stroke-dasharray="6 4"/>
-  <polygon points="240,105 240,115 252,110" fill="#4af0c0" opacity="0.6"/>
-  <polygon points="440,105 440,115 452,110" fill="#4af0c0" opacity="0.6"/>
-  <rect x="60" y="80" width="100" height="60" rx="12" fill="#1e2330" stroke="#4af0c0" stroke-width="1.5"/>
-  <text x="110" y="106" text-anchor="middle" fill="#4af0c0" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.1em">PLAN</text>
-  <text x="110" y="124" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">plan.md</text>
-  <rect x="260" y="80" width="100" height="60" rx="12" fill="#1e2330" stroke="#4a9cf0" stroke-width="1.5"/>
-  <text x="310" y="106" text-anchor="middle" fill="#4a9cf0" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.1em">EXECUTE</text>
-  <text x="310" y="124" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">checklist.yaml</text>
-  <rect x="460" y="80" width="100" height="60" rx="12" fill="#1e2330" stroke="#f0b84a" stroke-width="1.5"/>
-  <text x="510" y="106" text-anchor="middle" fill="#f0b84a" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.1em">VERIFY</text>
-  <text x="510" y="124" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">build &middot; test &middot; lint</text>
-  <text x="350" y="48" text-anchor="middle" fill="#5c6078" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.15em">REPEAT UNTIL DONE</text>
-  <circle cx="110" cy="170" r="3" fill="#4af0c0" opacity="0.3"/>
-  <circle cx="310" cy="170" r="3" fill="#4a9cf0" opacity="0.3"/>
-  <circle cx="510" cy="170" r="3" fill="#f0b84a" opacity="0.3"/>
-  <text x="110" y="190" text-anchor="middle" fill="#5c6078" font-family="DM Sans, sans-serif" font-size="8">Constraints</text>
-  <text x="310" y="190" text-anchor="middle" fill="#5c6078" font-family="DM Sans, sans-serif" font-size="8">Checkpoints</text>
-  <text x="510" y="190" text-anchor="middle" fill="#5c6078" font-family="DM Sans, sans-serif" font-size="8">Evidence</text>
+<svg class="illustration illustration-wide" viewBox="0 0 700 178" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agent execution loop diagram">
+  <rect width="700" height="178" rx="16" fill="#12151b"/>
+
+  <!-- Loopback path: right of EVOLVE → up → over → down → left of PLAN -->
+  <path d="M660 86 L672 86 Q684 86 684 70 L684 34 Q684 20 672 20 L28 20 Q16 20 16 34 L16 70 Q16 86 28 86 L40 86" stroke="#2a3040" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+  <rect x="270" y="13" width="160" height="14" rx="3" fill="#12151b"/>
+  <text x="350" y="24" text-anchor="middle" fill="#5c6078" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.15em">REPEAT UNTIL DONE</text>
+
+  <!-- Connection arrows (4 solid colored arrows between 5 boxes) -->
+  <path d="M140 86 L158 86" stroke="#4af0c0" stroke-width="2"/>
+  <polygon points="155,80 155,92 166,86" fill="#4af0c0" opacity="0.8"/>
+  <path d="M270 86 L288 86" stroke="#4a9cf0" stroke-width="2"/>
+  <polygon points="285,80 285,92 296,86" fill="#4a9cf0" opacity="0.8"/>
+  <path d="M400 86 L418 86" stroke="#f0b84a" stroke-width="2"/>
+  <polygon points="415,80 415,92 426,86" fill="#f0b84a" opacity="0.8"/>
+  <path d="M530 86 L548 86" stroke="#f06478" stroke-width="2"/>
+  <polygon points="545,80 545,92 556,86" fill="#f06478" opacity="0.8"/>
+
+  <!-- Box 1: PLAN — x=40, w=100, center=90 -->
+  <rect x="40" y="54" width="100" height="64" rx="10" fill="#1e2330" stroke="#4af0c0" stroke-width="1.5"/>
+  <text x="90" y="82" text-anchor="middle" fill="#4af0c0" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="0.1em">PLAN</text>
+  <text x="90" y="101" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">plan.md</text>
+
+  <!-- Box 2: EXECUTE — x=170, w=100, center=220 -->
+  <rect x="170" y="54" width="100" height="64" rx="10" fill="#1e2330" stroke="#4a9cf0" stroke-width="1.5"/>
+  <text x="220" y="82" text-anchor="middle" fill="#4a9cf0" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="0.1em">EXECUTE</text>
+  <text x="220" y="101" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">checklist.yaml</text>
+
+  <!-- Box 3: VERIFY — x=300, w=100, center=350 -->
+  <rect x="300" y="54" width="100" height="64" rx="10" fill="#1e2330" stroke="#f0b84a" stroke-width="1.5"/>
+  <text x="350" y="82" text-anchor="middle" fill="#f0b84a" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="0.1em">VERIFY</text>
+  <text x="350" y="101" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">build &middot; test &middot; lint</text>
+
+  <!-- Box 4: AUDIT — x=430, w=100, center=480 -->
+  <rect x="430" y="54" width="100" height="64" rx="10" fill="#1e2330" stroke="#f06478" stroke-width="1.5"/>
+  <text x="480" y="82" text-anchor="middle" fill="#f06478" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="0.1em">AUDIT</text>
+  <text x="480" y="101" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">run-log.md</text>
+
+  <!-- Box 5: EVOLVE — x=560, w=100, center=610, dashed border (meta-step) -->
+  <rect x="560" y="54" width="100" height="64" rx="10" fill="#1e2330" stroke="#9b6ef0" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="610" y="82" text-anchor="middle" fill="#9b6ef0" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="0.1em">EVOLVE</text>
+  <text x="610" y="101" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">skills &amp; evals</text>
+
+  <!-- Bottom labels -->
+  <circle cx="90" cy="136" r="3" fill="#4af0c0" opacity="0.3"/>
+  <circle cx="220" cy="136" r="3" fill="#4a9cf0" opacity="0.3"/>
+  <circle cx="350" cy="136" r="3" fill="#f0b84a" opacity="0.3"/>
+  <circle cx="480" cy="136" r="3" fill="#f06478" opacity="0.3"/>
+  <circle cx="610" cy="136" r="3" fill="#9b6ef0" opacity="0.3"/>
+  <text x="90" y="155" text-anchor="middle" fill="#5c6078" font-family="DM Sans, sans-serif" font-size="8">Constraints</text>
+  <text x="220" y="155" text-anchor="middle" fill="#5c6078" font-family="DM Sans, sans-serif" font-size="8">Checkpoints</text>
+  <text x="350" y="155" text-anchor="middle" fill="#5c6078" font-family="DM Sans, sans-serif" font-size="8">Evidence</text>
+  <text x="480" y="155" text-anchor="middle" fill="#5c6078" font-family="DM Sans, sans-serif" font-size="8">Decisions</text>
+  <text x="610" y="155" text-anchor="middle" fill="#5c6078" font-family="DM Sans, sans-serif" font-size="8">Improvement</text>
 </svg>
 
 <!-- ═══════ SHORT VERSION ═══════ -->
@@ -528,33 +559,39 @@ td:last-child, th:last-child { text-align: right; }
 <p>Long-running agents succeed when you treat them like <strong>production systems</strong>. You need a build-verify loop, a durable memory system, checkpointing, steering, and review workflows that scale.</p>
 
 <!-- Memory system illustration -->
-<svg class="illustration illustration-wide" viewBox="0 0 700 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three-file memory system">
-  <rect width="700" height="200" rx="16" fill="#12151b"/>
+<svg class="illustration illustration-wide" viewBox="0 0 700 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three-file memory system">
+  <rect width="700" height="220" rx="16" fill="#12151b"/>
   <text x="350" y="32" text-anchor="middle" fill="#5c6078" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.2em">THE THREE-FILE MEMORY SYSTEM</text>
-  <rect x="40" y="55" width="190" height="120" rx="12" fill="#1e2330" stroke="#4af0c0" stroke-width="1.5"/>
-  <rect x="40" y="55" width="190" height="36" rx="12" fill="#4af0c0" fill-opacity="0.08"/>
-  <rect x="40" y="79" width="190" height="2" fill="#4af0c0" fill-opacity="0.15"/>
-  <text x="64" y="77" fill="#4af0c0" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">plan.md</text>
-  <text x="60" y="106" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Blueprint</text>
-  <text x="60" y="124" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Constraints</text>
-  <text x="60" y="142" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Architecture</text>
-  <text x="60" y="160" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Verification strategy</text>
-  <rect x="255" y="55" width="190" height="120" rx="12" fill="#1e2330" stroke="#4a9cf0" stroke-width="1.5"/>
-  <rect x="255" y="55" width="190" height="36" rx="12" fill="#4a9cf0" fill-opacity="0.08"/>
-  <rect x="255" y="79" width="190" height="2" fill="#4a9cf0" fill-opacity="0.15"/>
-  <text x="279" y="77" fill="#4a9cf0" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">checklist.yaml</text>
-  <text x="275" y="106" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Work items</text>
-  <text x="275" y="124" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Acceptance criteria</text>
-  <text x="275" y="142" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Current status</text>
-  <text x="275" y="160" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Active task tracking</text>
-  <rect x="470" y="55" width="190" height="120" rx="12" fill="#1e2330" stroke="#f0b84a" stroke-width="1.5"/>
-  <rect x="470" y="55" width="190" height="36" rx="12" fill="#f0b84a" fill-opacity="0.08"/>
-  <rect x="470" y="79" width="190" height="2" fill="#f0b84a" fill-opacity="0.15"/>
-  <text x="494" y="77" fill="#f0b84a" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">run-log.md</text>
-  <text x="490" y="106" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Append-only ops log</text>
-  <text x="490" y="124" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Decisions &amp; evidence</text>
-  <text x="490" y="142" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Failures &amp; fixes</text>
-  <text x="490" y="160" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Audit trail</text>
+
+  <!-- plan.md card -->
+  <rect x="40" y="50" width="190" height="145" rx="12" fill="#1e2330" stroke="#4af0c0" stroke-width="1.5"/>
+  <rect x="41" y="51" width="188" height="40" rx="11" fill="#4af0c0" fill-opacity="0.08"/>
+  <line x1="41" y1="91" x2="229" y2="91" stroke="#4af0c0" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="135" y="77" text-anchor="middle" fill="#4af0c0" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600">plan.md</text>
+  <text x="60" y="115" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Blueprint</text>
+  <text x="60" y="133" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Constraints</text>
+  <text x="60" y="151" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Architecture</text>
+  <text x="60" y="169" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Verification strategy</text>
+
+  <!-- checklist.yaml card -->
+  <rect x="255" y="50" width="190" height="145" rx="12" fill="#1e2330" stroke="#4a9cf0" stroke-width="1.5"/>
+  <rect x="256" y="51" width="188" height="40" rx="11" fill="#4a9cf0" fill-opacity="0.08"/>
+  <line x1="256" y1="91" x2="444" y2="91" stroke="#4a9cf0" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="350" y="77" text-anchor="middle" fill="#4a9cf0" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600">checklist.yaml</text>
+  <text x="275" y="115" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Work items</text>
+  <text x="275" y="133" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Acceptance criteria</text>
+  <text x="275" y="151" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Current status</text>
+  <text x="275" y="169" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Active task tracking</text>
+
+  <!-- run-log.md card -->
+  <rect x="470" y="50" width="190" height="145" rx="12" fill="#1e2330" stroke="#f0b84a" stroke-width="1.5"/>
+  <rect x="471" y="51" width="188" height="40" rx="11" fill="#f0b84a" fill-opacity="0.08"/>
+  <line x1="471" y1="91" x2="659" y2="91" stroke="#f0b84a" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="565" y="77" text-anchor="middle" fill="#f0b84a" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600">run-log.md</text>
+  <text x="490" y="115" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Append-only ops log</text>
+  <text x="490" y="133" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Decisions &amp; evidence</text>
+  <text x="490" y="151" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Failures &amp; fixes</text>
+  <text x="490" y="169" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="10">Audit trail</text>
 </svg>
 
 <h3>The three-file memory system</h3>
@@ -667,48 +704,64 @@ td:last-child, th:last-child { text-align: right; }
 <p>A harness is the software around the model. It is the difference between &ldquo;chat with a model&rdquo; and &ldquo;operate an agent.&rdquo;</p>
 
 <!-- Harness comparison illustration -->
-<svg class="illustration illustration-wide" viewBox="0 0 700 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Harness comparison">
-  <rect width="700" height="300" rx="16" fill="#12151b"/>
+<svg class="illustration illustration-wide" viewBox="0 0 700 280" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Harness comparison">
+  <rect width="700" height="280" rx="16" fill="#12151b"/>
   <text x="350" y="32" text-anchor="middle" fill="#5c6078" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.2em">HARNESS LANDSCAPE</text>
-  <rect x="30" y="52" width="150" height="110" rx="10" fill="#1e2330" stroke="#4af0c0" stroke-width="1.5"/>
-  <text x="105" y="78" text-anchor="middle" fill="#4af0c0" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">Codex CLI</text>
-  <text x="105" y="98" text-anchor="middle" fill="#fff" font-family="DM Sans, sans-serif" font-size="9">Default for long runs</text>
-  <text x="105" y="116" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Plan mode &middot; Steering</text>
-  <text x="105" y="132" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Session persistence</text>
-  <text x="105" y="148" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Built-in review</text>
-  <rect x="200" y="52" width="150" height="110" rx="10" fill="#1e2330" stroke="#9b6ef0" stroke-width="1.5"/>
-  <text x="275" y="78" text-anchor="middle" fill="#9b6ef0" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">Claude Code</text>
-  <text x="275" y="98" text-anchor="middle" fill="#fff" font-family="DM Sans, sans-serif" font-size="9">Feature-rich</text>
-  <text x="275" y="116" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Hooks &middot; Stop hooks</text>
-  <text x="275" y="132" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Ralph loop pattern</text>
-  <text x="275" y="148" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Plugins ecosystem</text>
-  <rect x="370" y="52" width="150" height="110" rx="10" fill="#1e2330" stroke="#4a9cf0" stroke-width="1.5"/>
-  <text x="445" y="78" text-anchor="middle" fill="#4a9cf0" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">Cursor</text>
-  <text x="445" y="98" text-anchor="middle" fill="#fff" font-family="DM Sans, sans-serif" font-size="9">Background agents</text>
-  <text x="445" y="116" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Concrete public writing</text>
-  <text x="445" y="132" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Scaled agent ops</text>
-  <text x="445" y="148" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Portable model</text>
-  <rect x="540" y="52" width="130" height="110" rx="10" fill="#1e2330" stroke="#f0b84a" stroke-width="1.5"/>
-  <text x="605" y="78" text-anchor="middle" fill="#f0b84a" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">OpenCode &middot; Pi</text>
-  <text x="605" y="98" text-anchor="middle" fill="#fff" font-family="DM Sans, sans-serif" font-size="9">Model-agnostic</text>
-  <text x="605" y="116" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Terminal-first UX</text>
-  <text x="605" y="132" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Extensible &amp; hackable</text>
-  <text x="605" y="148" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Multi-provider</text>
-  <text x="350" y="196" text-anchor="middle" fill="#5c6078" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="0.15em">WHAT TO LOOK FOR IN A HARNESS</text>
-  <circle cx="105" cy="206" r="2" fill="#4af0c0" opacity="0.5"/>
-  <text x="105" y="220" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Plan + execute modes</text>
-  <circle cx="275" cy="206" r="2" fill="#9b6ef0" opacity="0.5"/>
-  <text x="275" y="220" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Session persistence</text>
-  <circle cx="445" cy="206" r="2" fill="#4a9cf0" opacity="0.5"/>
-  <text x="445" y="220" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Coherent compaction</text>
-  <circle cx="105" cy="230" r="2" fill="#4af0c0" opacity="0.5"/>
-  <text x="105" y="244" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Tool permissions</text>
-  <circle cx="275" cy="230" r="2" fill="#9b6ef0" opacity="0.5"/>
-  <text x="275" y="244" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Background terminals</text>
-  <circle cx="445" cy="230" r="2" fill="#4a9cf0" opacity="0.5"/>
-  <text x="445" y="244" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Skills + subagents</text>
-  <circle cx="605" cy="230" r="2" fill="#f0b84a" opacity="0.5"/>
-  <text x="605" y="244" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Steering ergonomics</text>
+
+  <!-- Card 1: Codex CLI  (x=30, w=148, center=104) -->
+  <rect x="30" y="52" width="148" height="110" rx="10" fill="#1e2330" stroke="#4af0c0" stroke-width="1.5"/>
+  <text x="104" y="78" text-anchor="middle" fill="#4af0c0" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">Codex CLI</text>
+  <text x="104" y="98" text-anchor="middle" fill="#fff" font-family="DM Sans, sans-serif" font-size="9">Default for long runs</text>
+  <text x="104" y="116" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Plan mode &middot; Steering</text>
+  <text x="104" y="132" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Session persistence</text>
+  <text x="104" y="148" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Built-in review</text>
+
+  <!-- Card 2: Claude Code  (x=194, w=148, center=268) -->
+  <rect x="194" y="52" width="148" height="110" rx="10" fill="#1e2330" stroke="#9b6ef0" stroke-width="1.5"/>
+  <text x="268" y="78" text-anchor="middle" fill="#9b6ef0" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">Claude Code</text>
+  <text x="268" y="98" text-anchor="middle" fill="#fff" font-family="DM Sans, sans-serif" font-size="9">Feature-rich</text>
+  <text x="268" y="116" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Hooks &middot; Stop hooks</text>
+  <text x="268" y="132" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Ralph loop pattern</text>
+  <text x="268" y="148" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Plugins ecosystem</text>
+
+  <!-- Card 3: Cursor  (x=358, w=148, center=432) -->
+  <rect x="358" y="52" width="148" height="110" rx="10" fill="#1e2330" stroke="#4a9cf0" stroke-width="1.5"/>
+  <text x="432" y="78" text-anchor="middle" fill="#4a9cf0" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">Cursor</text>
+  <text x="432" y="98" text-anchor="middle" fill="#fff" font-family="DM Sans, sans-serif" font-size="9">Background agents</text>
+  <text x="432" y="116" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Concrete public writing</text>
+  <text x="432" y="132" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Scaled agent ops</text>
+  <text x="432" y="148" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Portable model</text>
+
+  <!-- Card 4: OpenCode · Pi  (x=522, w=148, center=596) -->
+  <rect x="522" y="52" width="148" height="110" rx="10" fill="#1e2330" stroke="#f0b84a" stroke-width="1.5"/>
+  <text x="596" y="78" text-anchor="middle" fill="#f0b84a" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">OpenCode &middot; Pi</text>
+  <text x="596" y="98" text-anchor="middle" fill="#fff" font-family="DM Sans, sans-serif" font-size="9">Model-agnostic</text>
+  <text x="596" y="116" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Terminal-first UX</text>
+  <text x="596" y="132" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Extensible &amp; hackable</text>
+  <text x="596" y="148" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Multi-provider</text>
+
+  <!-- Bottom section: What to look for -->
+  <text x="350" y="190" text-anchor="middle" fill="#5c6078" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="0.15em">WHAT TO LOOK FOR IN A HARNESS</text>
+
+  <!-- Row 1 — aligned to card centers -->
+  <circle cx="104" cy="206" r="2" fill="#4af0c0" opacity="0.5"/>
+  <text x="104" y="220" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Plan + execute modes</text>
+  <circle cx="268" cy="206" r="2" fill="#9b6ef0" opacity="0.5"/>
+  <text x="268" y="220" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Session persistence</text>
+  <circle cx="432" cy="206" r="2" fill="#4a9cf0" opacity="0.5"/>
+  <text x="432" y="220" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Coherent compaction</text>
+  <circle cx="596" cy="206" r="2" fill="#f0b84a" opacity="0.5"/>
+  <text x="596" y="220" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Steering ergonomics</text>
+
+  <!-- Row 2 -->
+  <circle cx="104" cy="234" r="2" fill="#4af0c0" opacity="0.5"/>
+  <text x="104" y="248" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Tool permissions</text>
+  <circle cx="268" cy="234" r="2" fill="#9b6ef0" opacity="0.5"/>
+  <text x="268" y="248" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Background terminals</text>
+  <circle cx="432" cy="234" r="2" fill="#4a9cf0" opacity="0.5"/>
+  <text x="432" y="248" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Skills + subagents</text>
+  <circle cx="596" cy="234" r="2" fill="#f0b84a" opacity="0.5"/>
+  <text x="596" y="248" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="9">Multi-provider</text>
 </svg>
 
 <h3>Codex (CLI)</h3>
@@ -1094,42 +1147,60 @@ Skills to extract &middot; Docs to update &middot; Tech debt spotted</code></pre
 <h3>The default execution loop</h3>
 
 <!-- Execution loop illustration -->
-<svg class="illustration illustration-wide" viewBox="0 0 700 160" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Execution loop steps">
-  <rect width="700" height="160" rx="16" fill="#12151b"/>
+<svg class="illustration illustration-wide" viewBox="0 0 700 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Execution loop steps">
+  <rect width="700" height="200" rx="16" fill="#12151b"/>
+
+  <!-- Step 1 -->
   <rect x="20" y="40" width="80" height="80" rx="10" fill="#1e2330" stroke="#4af0c0" stroke-width="1"/>
   <text x="60" y="72" text-anchor="middle" fill="#4af0c0" font-family="JetBrains Mono, monospace" font-size="18" font-weight="600">1</text>
   <text x="60" y="98" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Pick next</text>
   <text x="60" y="110" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">task</text>
   <path d="M108 80 L124 80" stroke="#2a3040" stroke-width="1.5"/>
   <polygon points="124,76 124,84 132,80" fill="#4af0c0" opacity="0.4"/>
+
+  <!-- Step 2 -->
   <rect x="138" y="40" width="80" height="80" rx="10" fill="#1e2330" stroke="#4a9cf0" stroke-width="1"/>
   <text x="178" y="72" text-anchor="middle" fill="#4a9cf0" font-family="JetBrains Mono, monospace" font-size="18" font-weight="600">2</text>
   <text x="178" y="98" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Re-read</text>
   <text x="178" y="110" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">plan + code</text>
   <path d="M226 80 L242 80" stroke="#2a3040" stroke-width="1.5"/>
   <polygon points="242,76 242,84 250,80" fill="#4a9cf0" opacity="0.4"/>
+
+  <!-- Step 3 -->
   <rect x="256" y="40" width="80" height="80" rx="10" fill="#1e2330" stroke="#9b6ef0" stroke-width="1"/>
   <text x="296" y="72" text-anchor="middle" fill="#9b6ef0" font-family="JetBrains Mono, monospace" font-size="18" font-weight="600">3</text>
   <text x="296" y="98" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Smallest</text>
   <text x="296" y="110" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">change</text>
   <path d="M344 80 L360 80" stroke="#2a3040" stroke-width="1.5"/>
   <polygon points="360,76 360,84 368,80" fill="#9b6ef0" opacity="0.4"/>
+
+  <!-- Step 4 -->
   <rect x="374" y="40" width="80" height="80" rx="10" fill="#1e2330" stroke="#f0b84a" stroke-width="1"/>
   <text x="414" y="72" text-anchor="middle" fill="#f0b84a" font-family="JetBrains Mono, monospace" font-size="18" font-weight="600">4</text>
   <text x="414" y="98" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Verify</text>
   <text x="414" y="110" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">(fast loop)</text>
   <path d="M462 80 L478 80" stroke="#2a3040" stroke-width="1.5"/>
   <polygon points="478,76 478,84 486,80" fill="#f0b84a" opacity="0.4"/>
+
+  <!-- Step 5 -->
   <rect x="492" y="40" width="80" height="80" rx="10" fill="#1e2330" stroke="#f06478" stroke-width="1"/>
   <text x="532" y="72" text-anchor="middle" fill="#f06478" font-family="JetBrains Mono, monospace" font-size="18" font-weight="600">5</text>
   <text x="532" y="98" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Commit</text>
   <text x="532" y="110" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">checkpoint</text>
   <path d="M580 80 L596 80" stroke="#2a3040" stroke-width="1.5"/>
   <polygon points="596,76 596,84 604,80" fill="#f06478" opacity="0.4"/>
+
+  <!-- Step 6: Update & repeat (dashed) -->
   <rect x="610" y="40" width="70" height="80" rx="10" fill="#1e2330" stroke="#4af0c0" stroke-width="1" stroke-dasharray="4 3"/>
-  <text x="645" y="76" text-anchor="middle" fill="#4af0c0" font-family="JetBrains Mono, monospace" font-size="10">&#x21bb;</text>
+  <text x="645" y="74" text-anchor="middle" fill="#4af0c0" font-family="JetBrains Mono, monospace" font-size="22" font-weight="600">&#x21bb;</text>
   <text x="645" y="98" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">Update</text>
   <text x="645" y="110" text-anchor="middle" fill="#8b8fa3" font-family="DM Sans, sans-serif" font-size="8">&amp; repeat</text>
+
+  <!-- Loopback arrow: from bottom of step 6 → down → left → up to bottom of step 1 -->
+  <path d="M645 120 L645 150 Q645 165 630 165 L70 165 Q55 165 55 150 L55 125" stroke="#2a3040" stroke-width="1.5" stroke-dasharray="5 3" fill="none"/>
+  <!-- Arrowhead pointing up into step 1 -->
+  <polygon points="50,128 60,128 55,120" fill="#4af0c0" opacity="0.5"/>
+  <text x="350" y="180" text-anchor="middle" fill="#5c6078" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="0.15em">REPEAT UNTIL DONE</text>
 </svg>
 
 <p>Implement tasks until they reach a terminal state (<code>complete</code>, <code>failed</code>, or <code>archived_as_irrelevant</code>). Don&rsquo;t mark <code>complete</code> until acceptance criteria is met and verified. Add new tasks when discovered. Never delete tasks. Keep the summary updated so a human can see current status in 30 seconds.</p>
