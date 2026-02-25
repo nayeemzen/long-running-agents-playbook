@@ -3,80 +3,389 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Writings</title>
+  <title>Writings — Nayeem Zen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0c0e12;
-      --panel: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.08);
-      --text: #e2e4e9;
-      --muted: #8b8fa3;
-      --accent: #4a9cf0;
+      --bg: #1A3A2A;
+      --bg-raised: #224832;
+      --bg-hover: #2B553C;
+      --text: #E8E0D0;
+      --text-secondary: #B0A890;
+      --muted: #6B7E6B;
+      --accent: #E8E0D0;
+      --accent-dim: rgba(232, 224, 208, 0.08);
+      --accent-hover: #F5EFE3;
+      --rule: rgba(232, 224, 208, 0.10);
+      --rule-bold: rgba(232, 224, 208, 0.18);
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'Outfit', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
     }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { height: 100%; }
+
     body {
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: radial-gradient(1200px 800px at 50% 0%, rgba(74,156,240,0.10), transparent 60%), var(--bg);
+      min-height: 100%;
+      font-family: var(--sans);
+      background: var(--bg);
       color: var(--text);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
+
+    /* Layered atmosphere: radial glow + grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 900px 600px at 25% 0%, rgba(232, 224, 208, 0.04), transparent 60%),
+        radial-gradient(ellipse 600px 400px at 80% 100%, rgba(40, 80, 55, 0.20), transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+
     a { color: inherit; text-decoration: none; }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 56px 20px 80px; }
-    h1 { margin: 0 0 10px; font-size: 44px; letter-spacing: -0.02em; }
-    .sub { margin: 0 0 28px; color: var(--muted); font-size: 16px; line-height: 1.6; max-width: 62ch; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-    .card {
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      padding: 96px 0 72px;
+      position: relative;
+    }
+
+    .hero-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.15s;
+    }
+
+    .hero-label::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.4;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(56px, 9vw, 96px);
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.035em;
+      color: var(--text);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.25s;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      margin-top: 32px;
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      font-weight: 300;
+      max-width: 40ch;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    /* ─── Divider ─── */
+    .divider {
+      height: 1px;
+      background: var(--rule-bold);
+      position: relative;
+      opacity: 0;
+      animation: scaleX 0.8s ease forwards 0.5s;
+      transform-origin: left;
+    }
+
+    /* ─── Entries ─── */
+    .entries {
+      padding: 12px 0 0;
+    }
+
+    .entry {
       display: block;
-      padding: 18px 18px 16px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      padding: 44px 0;
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.6s;
+      cursor: pointer;
     }
-    .card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(74,156,240,0.35);
-      background: linear-gradient(180deg, rgba(74,156,240,0.10), rgba(255,255,255,0.03));
+
+    .entry-inner {
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      gap: 0 24px;
+      align-items: start;
     }
-    .meta { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(226,228,233,0.68); }
-    .title { margin-top: 10px; font-size: 22px; font-weight: 650; }
-    .desc { margin-top: 8px; color: var(--muted); line-height: 1.55; }
-    .links { margin-top: 14px; display: flex; gap: 14px; flex-wrap: wrap; }
-    .pill {
+
+    .entry-num {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-style: italic;
+      color: var(--accent);
+      line-height: 1;
+      padding-top: 2px;
+      transition: transform 0.3s ease;
+    }
+
+    .entry:hover .entry-num {
+      transform: translateX(4px);
+    }
+
+    .entry-content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .entry-type {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .entry-title {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 38px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      transition: color 0.3s ease;
+    }
+
+    .entry:hover .entry-title {
+      color: var(--accent);
+    }
+
+    .entry-desc {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      font-weight: 300;
+      max-width: 50ch;
+    }
+
+    .entry-arrow {
+      font-family: var(--serif);
+      font-size: 28px;
+      color: var(--accent);
+      opacity: 0;
+      transform: translateX(-12px);
+      transition: all 0.3s ease;
+      margin-top: 6px;
+    }
+
+    .entry:hover .entry-arrow {
+      opacity: 0.7;
+      transform: translateX(0);
+    }
+
+    .entry-actions {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--rule-bold);
+      background: transparent;
+      color: var(--text);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      background: var(--panel);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 999px;
-      font-size: 13px;
-      color: rgba(226,228,233,0.92);
+      gap: 10px;
+      transition: all 0.25s ease;
     }
-    .pill strong { color: var(--accent); font-weight: 650; }
-    footer { margin-top: 44px; color: rgba(226,228,233,0.45); font-size: 13px; }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      opacity: 0.8;
+    }
+
+    .btn:hover {
+      border-color: rgba(232, 224, 208, 0.35);
+      transform: translateY(-1px);
+      color: var(--accent-hover);
+    }
+
+    .btn--fill {
+      background: var(--accent-dim);
+      border-color: rgba(232, 224, 208, 0.22);
+    }
+
+    /* Footer */
+    footer {
+      padding: 44px 0 68px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--rule-bold);
+      opacity: 0.9;
+    }
+
+    /* ─── Animations ─── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleX {
+      from {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      to {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 640px) {
+      .page { padding: 0 20px; }
+      .hero { padding: 64px 0 52px; }
+      .hero::after { display: none; }
+      .entry-inner {
+        grid-template-columns: 1fr;
+        gap: 14px 0;
+      }
+      .entry-num {
+        font-size: 28px;
+      }
+      .entry-arrow { display: none; }
+      .entry-actions {
+        gap: 8px;
+      }
+      .btn {
+        padding: 9px 16px;
+        font-size: 10px;
+      }
+    }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <h1>Writings</h1>
-    <p class="sub">Short, practical notes and playbooks.</p>
+  <div class="page">
 
-    <section class="grid" aria-label="Writings">
-      <a class="card" href="long-running-agents/">
-        <div class="meta">Playbook</div>
-        <div class="title">Long-Running Agents</div>
-        <div class="desc">Operating autonomous, long-running, self-improving agents on complex tasks.</div>
-        <div class="links">
-          <span class="pill"><strong>Read</strong> HTML</span>
-          <a class="pill" href="long-running-agents/playbook.pdf" download><strong>Download</strong> PDF</a>
-        </div>
-      </a>
+    <section class="hero">
+      <div class="hero-label">Collection</div>
+      <h1>Notes &<br><em>playbooks</em></h1>
+      <p class="hero-sub">Writings on software, AI agents, startups, and whatever rabbit hole I happen to be in.</p>
     </section>
 
-    <footer>By Nayeem Zen.</footer>
-  </main>
+    <div class="divider"></div>
+
+    <section class="entries">
+      <div class="entry" onclick="window.location='long-running-agents/'">
+        <div class="entry-inner">
+          <div class="entry-num">01</div>
+          <div class="entry-content">
+            <div class="entry-type">Playbook</div>
+            <div class="entry-title">Long-Running Agents</div>
+            <div class="entry-desc">Operating autonomous, long-running, self-improving agents on complex tasks.</div>
+            <div class="entry-actions">
+              <a class="btn btn--fill" href="long-running-agents/">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                Read
+              </a>
+              <a class="btn" href="long-running-agents/playbook.pdf" download>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                PDF
+              </a>
+            </div>
+          </div>
+          <div class="entry-arrow">→</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <a href="https://x.com/nayeemzen" target="_blank" rel="noopener">@nayeemzen</a>
+        <span class="dot"></span>
+        <span id="footer-date"></span>
+      </div>
+    </footer>
+
+  </div>
+  <script>
+    const d = new Date();
+    const month = d.toLocaleString('en-US', { month: 'long' });
+    const year = d.getFullYear();
+    document.getElementById('footer-date').textContent = month + ' ' + year;
+  </script>
 </body>
 </html>
