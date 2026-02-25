@@ -1426,6 +1426,13 @@ pre code.hljs {
 <li>Data validations (queries, metrics checks, diffs)</li>
 </ul>
 <p>If you do not have a loop, build the loop first.</p>
+<p><strong>Pattern: red/green TDD.</strong> A simple, agent-friendly build-verify loop is: write a test that fails (red), make it pass (green), repeat. It forces the agent to prove progress and prevents plausible-but-wrong changes.</p>
+<ol type="1">
+<li><strong>Red:</strong> Add or update a test that captures the next acceptance criterion. Run it and confirm it fails for the expected reason.</li>
+<li><strong>Green:</strong> Make the smallest change that makes that test pass. Rerun and capture the passing output as evidence.</li>
+<li><strong>Repeat:</strong> Move to the next slice. If the new test never failed, it is not testing the behavior you think it is.</li>
+</ol>
+<p>Use "red/green TDD" explicitly in prompts; models understand the shorthand. Source: <a href="https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/">Simon Willison: Red-green TDD (agentic engineering patterns)</a>.</p>
 <h3 id="configure-skills-and-mcp-before-refactors">Configure skills and MCP (before refactors)</h3>
 <p>Skills (and MCP if you need data from external systems) are critical to make sure your agent has all the tools for a successful run.</p>
 <p><strong>Skills</strong></p>
