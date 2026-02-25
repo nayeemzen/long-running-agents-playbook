@@ -99,6 +99,9 @@ body {
   margin-top: 3rem; position: relative; z-index: 1;
   opacity: 0; animation: fadeUp .8s ease forwards; animation-delay: .8s;
 }
+.cover-meta a { color: var(--text-muted); border-bottom-color: rgba(255,255,255,.14); }
+.cover-meta a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.cover-author { display: inline-block; margin-top: .65rem; }
 .cover-updated { display: inline-block; margin-top: .4rem; color: var(--text-dim); }
 .cover-scroll {
   position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
@@ -441,10 +444,10 @@ pre code.hljs {
 <!-- ═══════════════ COVER ═══════════════ -->
 <section class="cover">
   <div class="cover-grid"></div>
-  <div class="cover-label">Playbook v8 &middot; February 2026</div>
+  <div class="cover-label">February 2026</div>
   <h1>Long-Running <em>Agents</em></h1>
   <p class="cover-sub">An operating model for handing off real engineering work to autonomous coding agents&mdash;and shipping the result safely.</p>
-  <p class="cover-meta">Commits &middot; Tests &middot; Diffs you can ship<br><span class="cover-updated">Last updated &middot; 2026-02-24</span></p>
+  <p class="cover-meta">Relentless, observable &amp; self-improving agents.<br><span class="cover-author">Nayeem Zen &middot; <a href="https://x.com/nayeemzen">x: @nayeemzen</a> &middot; <a href="https://www.linkedin.com/in/nayeemzen">linkedin: linkedin.com/in/nayeemzen</a></span><br><span class="cover-updated">Last updated &middot; 2026-02-24</span></p>
   <div class="cover-scroll">
     <span>Scroll</span>
     <div class="arrow"></div>
@@ -452,9 +455,6 @@ pre code.hljs {
 </section>
 
 <div class="book">
-<p>Long-running agents are coding agents that can run for hours or days with minimal intervention. You hand them a scoped job, a verification loop, and a memory system. They keep working, checkpointing, and producing evidence until your task is <strong>verifiably complete</strong>.</p>
-<p>Cursor has written about how their agents work continuously over a week on a single codebase. Examples include a web browser built from scratch with 1M+ lines across about 1,000 files, and a Java LSP with 2.5M+ lines across about 10,000 files. They also report peaks around 10M tool calls in a week, with bursts around 1,000 commits per hour. Source: <a href="https://cursor.com/blog/scaling-agents">Scaling long-running autonomous coding</a>.</p>
-<p>This playbook is an operating model for how I achieved similar results. It is opinionated. It assumes you want throughput and you still want to ship safely: green CI, reviewable diffs, rollback paths, and no surprises in production.</p>
 <nav class="toc" id="contents">
   <div class="toc-title">Contents</div>
   <div class="toc-tree">
@@ -464,7 +464,7 @@ pre code.hljs {
 <ul>
 <li><a href="#who-this-is-for">Who this is for</a></li>
 <li><a href="#how-to-use-this-playbook">How to use this playbook</a></li>
-<li><a href="#what-a-long-running-agent-is">What a long-running agent is</a>
+<li><a href="#what-a-long-running-agent-is">What is a long-running agent?</a>
 <ul>
 <li><a href="#where-long-running-agents-shine">Where long-running agents shine</a></li>
 <li><a href="#where-they-are-a-bad-fit">Where they are a bad fit</a></li>
@@ -615,11 +615,15 @@ pre code.hljs {
 
 <section class="chapter" id="what-a-long-running-agent-is">
   <span class="chapter-num">Chapter 03</span>
-  <h2>What a long-running agent is</h2>
+  <h2>What is a long-running agent?</h2>
   <div class="chapter-line"></div>
 </section>
 
-<p>A long-running agent is a coding agent that can run for hours or days with minimal intervention while it:</p>
+<p>Long-running agents are coding agents that can run for hours or days with minimal intervention. You hand them a scoped job, a verification loop, and a memory system. They keep working, checkpointing, and producing evidence until your task is <strong>verifiably complete</strong>.</p>
+<p>Cursor has written about how their agents work continuously over a week on a single codebase. Examples include a web browser built from scratch with 1M+ lines across about 1,000 files, and a Java LSP with 2.5M+ lines across about 10,000 files. They also report peaks around 10M tool calls in a week, with bursts around 1,000 commits per hour. Source: <a href="https://cursor.com/blog/scaling-agents">Scaling long-running autonomous coding</a>.</p>
+<p>This playbook is an operating model for how I achieved similar results. It is opinionated. It assumes you want throughput and you still want to ship safely: green CI, reviewable diffs, rollback paths, and no surprises in production.</p>
+
+<p>In concrete terms, a long-running agent:</p>
 <ul>
 <li>Plans and executes long, complex multi-step work</li>
 <li>Keeps score with a build-verify loop (tests, builds, linters, benchmarks, browser flows, queries)</li>
@@ -2343,7 +2347,7 @@ git clone &quot;$(pwd)&quot; ../repo-agent-perf</code></pre>
 
 <footer class="footer">
   <div class="footer-line"></div>
-  Long-Running Agents Playbook &middot; Generated from playbook-v8.md
+  Long-Running Agents Playbook &middot; By Nayeem Zen
 </footer>
 </div>
 
