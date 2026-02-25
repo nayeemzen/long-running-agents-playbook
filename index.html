@@ -90,9 +90,24 @@ body {
 }
 .cover h1 em { font-style: italic; color: var(--accent); }
 .cover-sub {
-  font-family: var(--font-mono); font-size: 1.15rem; color: var(--accent); max-width: 520px;
-  margin-top: 1.5rem; position: relative; z-index: 1;
+  font-family: var(--font-mono); font-size: .95rem; line-height: 1.65;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(226, 228, 233, 0.72);
+  max-width: 640px; text-wrap: balance;
+  margin-top: 1.75rem; position: relative; z-index: 1;
   opacity: 0; animation: fadeUp .8s ease forwards; animation-delay: .6s;
+}
+@supports (-webkit-background-clip: text) {
+  .cover-sub {
+    background: linear-gradient(90deg,
+      rgba(226, 228, 233, 0.86),
+      rgba(74, 156, 240, 0.92),
+      rgba(155, 110, 240, 0.92)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 .cover-meta {
   font-family: var(--font-mono); font-size: .72rem; color: var(--text-dim);
@@ -102,6 +117,9 @@ body {
 .cover-meta a { color: var(--text-muted); border-bottom-color: rgba(255,255,255,.14); }
 .cover-meta a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 .cover-author { display: inline-block; }
+.cover-date { display: block; margin-top: .55rem; }
+.cover-download { text-decoration: underline; text-underline-offset: 3px; border-bottom: none; }
+.cover-download:hover { text-decoration-color: var(--accent); }
 .cover-scroll {
   position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: .5rem;
@@ -443,10 +461,9 @@ pre code.hljs {
 <!-- ═══════════════ COVER ═══════════════ -->
 <section class="cover">
   <div class="cover-grid"></div>
-  <div class="cover-label">February 2026</div>
   <h1>Long-Running <em>Agents</em></h1>
   <p class="cover-sub">A practical handbook of principles and lessons for operating autonomous, long-running, self-improving agents on complex tasks.</p>
-  <p class="cover-meta"><span class="cover-author">Nayeem Zen &middot; <a href="https://x.com/nayeemzen">@nayeemzen</a> &middot; <a href="https://www.linkedin.com/in/nayeemzen">linkedin.com/in/nayeemzen</a></span></p>
+  <p class="cover-meta"><span class="cover-author">Nayeem Zen &middot; <a href="https://x.com/nayeemzen">@nayeemzen</a> &middot; <a href="https://www.linkedin.com/in/nayeemzen">linkedin.com/in/nayeemzen</a></span><span class="cover-date">February 2026. * <a class="cover-download" href="https://github.com/nayeemzen/long-running-agents-playbook/raw/master/playbook.pdf">Download PDF</a>.</span></p>
   <div class="cover-scroll">
     <span>Scroll</span>
     <div class="arrow"></div>
